@@ -18,13 +18,14 @@ from django.contrib import admin
 from django.urls import path
 from accounts import views
 from home.views import *
+from vege.views import *
 
 urlpatterns = [
     path('', views.home, name="home"),
+    path('receipes/', receipes, name="receipes"),
+
     path('contact/', views.contact, name="contact"),
     path('about/', views.about, name="about"),
-
-
 
     path('success-page/', success_page, name="success_page"),
 
