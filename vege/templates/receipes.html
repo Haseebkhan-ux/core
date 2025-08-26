@@ -4,7 +4,7 @@
 
 <div class = "container mt-5">
 
-<form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+     <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
   {% csrf_token %}  
   <h2>Add Receipe</h2>
   <hr>
@@ -22,5 +22,36 @@
   </div>
   
   <button type="submit" class="btn btn-success">Add Receipe</button>
-</form>
+       </form>
+
+      
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Receipe name</th>
+      <th scope="col">Receipe Desc</th>
+      <th scope="col">Image</th>
+      <th scope="col">Actions</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for receipe in receipes %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{receipe.receipe_name}}</td>
+      <td>{{receipe.receipe_description}}</td>
+      <td>
+        <img src="/media/{{receipe.receipe_image}}" style="height : 100px"></td>
+        <td>
+          <a href="/delete-receipe/{{receipe.id}}/" class="btn btn-danger">Delete</button>
+          </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+
     {% endblock %}

@@ -19,10 +19,14 @@ from django.urls import path
 from accounts import views
 from home.views import *
 from vege.views import *
+from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', views.home, name="home"),
     path('receipes/', receipes, name="receipes"),
+    path('delete-receipe/<id>/' , delete_receipe , name="receipe"),
 
     path('contact/', views.contact, name="contact"),
     path('about/', views.about, name="about"),
@@ -31,3 +35,11 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+    
+
+urlpatterns += staticfiles_urlpatterns()
