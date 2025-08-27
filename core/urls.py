@@ -27,9 +27,12 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('receipes/', receipes, name="receipes"),
     path('delete-receipe/<id>/' , delete_receipe , name="receipe"),
+    path('update-receipe/<id>/' , update_receipe , name="receipe"),
 
     path('contact/', views.contact, name="contact"),
     path('about/', views.about, name="about"),
+    path('login/', login_page, name="login_page"),
+    path('register/', register, name="register"),
 
     path('success-page/', success_page, name="success_page"),
 
