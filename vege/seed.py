@@ -9,7 +9,7 @@ def seed_db(n=10)->None:
         for i in range(0, n):
         
            departments_objs = Department.objects.all()
-           random_index = random.randint(0 , len(departments_objs))
+           random_index = random.randint(0 , len(departments_objs)-1)
            student_id = f'STU-0{random.randint(100 , 999)}'
            department = departments_objs[random_index]          
            student_name = fake.name()
