@@ -114,3 +114,9 @@ def register(request):
         return redirect('/register/')
 
     return render(request , 'vege/register.html')
+
+
+def get_students(request):
+    queryset = Student.objects.all()
+
+    return render(request , {'queryset' : queryset})
