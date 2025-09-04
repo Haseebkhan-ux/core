@@ -1,0 +1,47 @@
+{% extends "home/base.html" %}
+{% block start %}
+
+
+<div class = "container mt-5">
+    
+    <table class="table table-striped">
+       <thead>
+         <tr>
+           <th scope="col">#</th>
+           <th scope="col">student_id</th>
+           <th scope="col">Department</th>
+           <th scope="col">student_name</th>
+           <th scope="col">student_email</th>
+           <th scope="col">student_age</th>
+         </tr>
+        </thead>
+        <tbody>
+            {% for student in queryset %}
+         <tr>
+           <th scope="row">{{forloop.counter}}</th>
+           <td>
+           <a href="{% url 'see_marks' student.student_id %}" >
+              {{student.student_id}}
+
+           </a>                           
+         </td>
+           <td>{{student.department.department}}</td>
+           <td>{{student.student_name}}</td>
+           <td>{{student.student_email}}</td>
+           <td>{{student.student_age}}</td>
+         </tr>
+         {% endfor %}
+
+        </tbody>
+        </table>
+        
+         
+
+
+   </div>
+
+
+
+
+
+{% endblock %}
