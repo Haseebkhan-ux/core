@@ -52,7 +52,7 @@ class Student(models.Model):
 
 class SubjectMarks(models.Model):
      student = models.ForeignKey(Student , related_name="studentmarks" , on_delete=models.CASCADE)
-     subject = models.ForeignKey(Subject , on_delete=models.CASCADE)         
+     subject = models.ForeignKey(Subject , on_delete=models.CASCADE)        
      marks = models.IntegerField()
 
      def __str__(self) -> str:
@@ -61,3 +61,11 @@ class SubjectMarks(models.Model):
 
      class Meta:
           unique_together = ['student' , 'subject']
+
+class ReportCard(models.Model):
+     student = models.ForeignKey(Student , related_name="studentreportcard" , on_delete=models.CASCADE)
+     student_rank = models.IntegerField()
+     date_of_report_card_generation = models.DateField(auto_now_add=True)
+
+     class Meta:
+          unique_together = ['student_rank' ,'date_of_report_card_generation']         
