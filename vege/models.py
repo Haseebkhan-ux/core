@@ -1,6 +1,9 @@
-from django.db import models
+from django.db import models 
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
+ 
 
 
 class Receipe(models.Model):
@@ -9,6 +12,11 @@ class Receipe(models.Model):
     receipe_description = models.TextField()
     receipe_image = models.ImageField(upload_to="receipe")
     recipe_view_count = models.IntegerField(default=1)
+    
+
+    def save(self, *args, **kwargs):
+        print("hello")
+        super(Receipe , self).save(*args, **kwargs)
 
 
 class Department(models.Model):

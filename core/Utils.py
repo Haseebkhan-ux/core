@@ -1,4 +1,4 @@
-from home.models import student
+from home.models import Student
 import time
 
 def run_this_function():
